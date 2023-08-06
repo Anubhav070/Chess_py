@@ -1,7 +1,12 @@
-def print_hi(name):
-    print(f'Hi, {name}')
+import pygame
 
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-
+pygame.init()
+WIDTH = 1000
+HEIGHT = 900
+screen = pygame.display.set_mode([WIDTH, HEIGHT])
+pygame.display.set_caption('Two-Player Pygame Chess!')
+font = pygame.font.Font('freesansbold.ttf', 20)
+medium_font = pygame.font.Font('freesansbold.ttf', 40)
+big_font = pygame.font.Font('freesansbold.ttf', 50)
+timer = pygame.time.Clock()
+fps = 60
