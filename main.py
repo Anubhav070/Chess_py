@@ -37,40 +37,40 @@ selection = 100
 valid_moves = []
 # loading in chess piece images (king, queen, rook, bishop, knight, pawn ) for white and black
 
-black_queen = pygame.image.load('Chess/black_queen.png')
+black_queen = pygame.image.load('assets/black_queen.png')
 black_queen_small = pygame.transform.scale(black_queen, (45, 45))
 
-black_king = pygame.image.load('Chess/black_king.png')
+black_king = pygame.image.load('assets/black_king.png')
 black_king_small = pygame.transform.scale(black_king, (45, 45))
 
-black_rook = pygame.image.load('Chess/black_rook.png')
+black_rook = pygame.image.load('assets/black_rook.png')
 black_rook_small = pygame.transform.scale(black_rook, (45, 45))
 
-black_bishop = pygame.image.load('Chess/black_bishop.png')
+black_bishop = pygame.image.load('assets/black_bishop.png')
 black_bishop_small = pygame.transform.scale(black_bishop, (45, 45))
 
-black_knight = pygame.image.load('Chess/black_knight.png')
+black_knight = pygame.image.load('assets/black_knight.png')
 black_knight_small = pygame.transform.scale(black_knight, (45, 45))
 
-black_pawn = pygame.image.load('Chess/black_pawn.png')
+black_pawn = pygame.image.load('assets/black_pawn.png')
 black_pawn_small = pygame.transform.scale(black_pawn, (45, 45))
 
-white_queen = pygame.image.load('Chess/white_queen.png')
+white_queen = pygame.image.load('assets/white_queen.png')
 white_queen_small = pygame.transform.scale(white_queen, (45, 45))
 
-white_king = pygame.image.load('Chess/white_king.png')
+white_king = pygame.image.load('assets/white_king.png')
 white_king_small = pygame.transform.scale(white_king, (45, 45))
 
-white_rook = pygame.image.load('Chess/white_rook.png')
+white_rook = pygame.image.load('assets/white_rook.png')
 white_rook_small = pygame.transform.scale(white_rook, (45, 45))
 
-white_bishop = pygame.image.load('Chess/white_bishop.png')
+white_bishop = pygame.image.load('assets/white_bishop.png')
 white_bishop_small = pygame.transform.scale(white_bishop, (45, 45))
 
-white_knight = pygame.image.load('Chess/white_knight.png')
+white_knight = pygame.image.load('assets/white_knight.png')
 white_knight_small = pygame.transform.scale(white_knight, (45, 45))
 
-white_pawn = pygame.image.load('Chess/white_pawn.png')
+white_pawn = pygame.image.load('assets/white_pawn.png')
 white_pawn_small = pygame.transform.scale(white_pawn, (45, 45))
 
 black_images = [black_king, black_queen, black_knight, black_rook, black_bishop, black_pawn]
@@ -133,6 +133,28 @@ def chess_piece():
         #         pygame.draw.rect(screen, 'blue', [black_locations[i][0] * 100 + 1, black_locations[i][1] * 100 + 1,
         #                                           100, 100], 2)
 
+#checking all valid moves and adding to a list
+def valid_moves(pieces, location, turn):
+    moves_list = []
+    all_moves_list = []  #list of all valid option the current player has
+    for i in range (len(pieces)):
+        location = locations[i]
+        piece = pieces[i]
+
+        if piece == "pawn":
+            moves_list = check_pawn(location, turn)
+        elif piece == "rook":
+            moves_list = check_rook(location, turn)
+        elif piece == "bishop":
+            moves_list = check_bishop(location, turn)
+        elif piece == "knight":
+            moves_list = check_knight(location, turn)
+        elif piece == "queen":
+            moves_list = check_queen(location, turn)
+        elif piece == "king":
+            moves_list = check_king(location, turn)
+        all_moves_list.append(moves_list)
+    return all_moves_list
 
 # main game loop
 
